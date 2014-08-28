@@ -42,3 +42,11 @@ node android2gettext.js <android.xml >gettext.po
 There is yet to build:
 * a script that will convert a PO file back into Android XML format
 * a script that will convert both ways between IOS Strings format and Gettext PO format
+
+### Resources
+
+* Gettext parser: https://github.com/andris9/gettext-parser
+* NPM Xpath: https://www.npmjs.org/package/xpath
+* NPM XMLDOM: https://github.com/jindw/xmldom
+* Plurals in PO files: https://www.gnu.org/software/gettext/manual/html_node/Translating-plural-forms.html
+* Android String resources: http://developer.android.com/guide/topics/resources/string-resource.html
