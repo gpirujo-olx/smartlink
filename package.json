@@ -1,0 +1,11 @@
+{
+    "name": "smartlink",
+    "description": "Script to link OLX translations with Smartling",
+    "version": "0.0.1",
+    "private": true,
+    "dependencies": {
+        "xmldom": "*",
+        "xpath": "*",
+        "gettext-parser": "*"
+    }
+}
