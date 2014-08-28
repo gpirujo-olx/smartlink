@@ -34,25 +34,18 @@ require('./common').stdin(function(input) {
     var po = gettext.po.parse(input);
 
     if (process.argv[2] == 'upload') {
-        var re = /<([^<>]*)<([^<>]*)>([^<>]*)>/g;
         po.translations = transform(po.translations, function(m) {
-            for (var i = 0; i < m.msgstr.length; i++) {
-                while (re.test(m.msgstr[i])) {
-                    m.msgstr[i] = m.msgstr[i].replace(re, '<$1{{$2}}$3>');
-                }
-            }
             m.msgctxt = m.msgid;
-            m.msgid = m.msgstr;
+            m.msgid = m.msgstr[0] = m.msgstr[0].replace(/<\//g, '< /');
         });
     } else if (process.argv[2] == 'download') {
         po.translations = transform(po.translations, function(m) {
+            m.msgstr[0] = m.msgstr[0].replace(/< \//g, '</');
             m.msgid = m.msgctxt;
-            m.msgctxt = '';
+            delete(m.msgctxt);
         });
     }
 
     process.stdout.write(gettext.po.compile(po));
-
-    //console.log(require('util').inspect(po, {'colors': true, 'depth': 5}));
 
 });
